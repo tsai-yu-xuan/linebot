@@ -1,28 +1,29 @@
 import 'dotenv/config'
+// 引用dotenv的套件
 import linebot from 'linebot'
-import axios from 'axios'
+// 引用linebot的套件
+import commandFE from './commands/fe.js'
 
-// console.log(process.env)
 const bot = linebot({
   channelId: process.env.CHANNEL_ID,
   channelSecret: process.env.CHANNEL_SECRET,
   channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
 })
-bot.on('message', async (event) => {
-  console.log(event)
-  if (event.message.type !== 'text') return
-  try {
-    // const result = await event.reply(event.message.text)
-    // console.log(result)
-    const { data } = await axios.get('https://data.moa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&IsTransData=1')
-  } catch (error) {
-    console.log(error)
-    console.log(error.name)
-    console.log(error.message)
-  }
+// 設定套件的env環境變數
 
-  // 這是把使用著輸入的文字  在一樣的回傳回去
+// 當我的bot收到訊息時，
+bot.on('message', event => {
+  if (process.env.DEBUG === 'true') {
+    console.log(event)
+  }
+  if (event.message.type === 'text') {
+    if (event.message.text === '桃園') {
+      commandFE(event)
+    }
+  }
 })
-bot.listen('/', 3000, () => {
+
+bot.listen('/', process.env.PORT || 3000, () => {
   console.log('機器人啟動')
 })
+// process.env.PORT 因為之後會推雲端 所以要設
