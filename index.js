@@ -2,7 +2,9 @@ import 'dotenv/config'
 // 引用dotenv的套件
 import linebot from 'linebot'
 // 引用linebot的套件
-import commandFE from './commands/fe.js'
+import fe from './commands/fe.js'
+
+// import adopt from './commands/adopt.js'
 
 const bot = linebot({
   channelId: process.env.CHANNEL_ID,
@@ -12,18 +14,26 @@ const bot = linebot({
 // 設定套件的env環境變數
 
 // 當我的bot收到訊息時，
-bot.on('message', event => {
-  if (process.env.DEBUG === 'true') {
-    console.log(event)
+bot.on('message', async (event) => {
+  if (event.message.text === '狗' || event.message.text === '貓') {
+    // fe()
+    fe(event)
   }
-  if (event.message.type === 'text') {
-    if (event.message.text === '桃園') {
-      commandFE(event)
-    }
-  }
+  // if (process.env.DEBUG === 'true') {
+  //   console.log(event)
+  // }
+  // 抓定位
+  // if (event.message.type === 'location') {
+  //   adopt()
+  // }
 })
-
+// linebot 偵測指定 port 的指定路徑請求
 bot.listen('/', process.env.PORT || 3000, () => {
   console.log('機器人啟動')
 })
 // process.env.PORT 因為之後會推雲端 所以要設
+
+// 放動物 貓或狗
+// 公或母
+// 地址區分
+// 年齡區分
