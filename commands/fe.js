@@ -41,7 +41,7 @@ export default async (event) => {
     const result = await event.reply(animalsReply)
 
     if (process.env.DEBUG === 'true') {
-      if (result.message) { fs.writeFileSync('./dump/animals.json', JSON.stringify(reply, null, 2)) }
+      if (result.message) { fs.writeFileSync('./dump/animals.json', JSON.stringify(animals, null, 2)) }
     }
 
     // 正文教我的
