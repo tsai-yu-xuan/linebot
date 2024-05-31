@@ -29,7 +29,7 @@ export default async (event) => {
 
       return replyAdopt
     })
-    const reply = {
+    const animalsReply = {
       type: 'flex',
       altText: '寵物認養查詢結果',
       contents: {
@@ -38,16 +38,29 @@ export default async (event) => {
         contents: animals
       }
     }
-    event.reply(reply)
-    const exists = fs.existsSync('./dump')
-    if (!exists) {
-      fs.mkdirSync('./dump')
-    }
-    fs.writeFileSync('./dump/animals.json', JSON.stringify(reply, null, 2))
-    console.log(JSON.stringify(reply, null, 2))
-    // animals()
+    const result = await event.reply(animalsReply)
 
-    // event.reply([data.album_file, data.animal_Variety])
+    if (process.env.DEBUG === 'true') {
+      if (result.message) { fs.writeFileSync('./dump/animals.json', JSON.stringify(reply, null, 2)) }
+    }
+
+    // 正文教我的
+    // const reply = {
+    //   type: 'flex',
+    //   altText: '寵物認養查詢結果',
+    //   contents: {
+    //     type: 'carousel',
+    //     // 輪播
+    //     contents: animals
+    //   }
+    // }
+    // event.reply(reply)
+    // const exists = fs.existsSync('./dump')
+    // if (!exists) {
+    //   fs.mkdirSync('./dump')
+    // }
+    // fs.writeFileSync('./dump/animals.json', JSON.stringify(reply, null, 2))
+    // console.log(JSON.stringify(reply, null, 2))
   } catch (error) {
     console.log(error)
     event.reply('發生錯誤，請稍後在試')
