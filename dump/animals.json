@@ -8,7 +8,7 @@
         "type": "bubble",
         "hero": {
           "type": "image",
-          "url": "https://www.pet.gov.tw/upload/pic/1716887191321.png",
+          "url": "",
           "size": "full",
           "aspectRatio": "20:13",
           "aspectMode": "cover"
@@ -19,7 +19,7 @@
           "contents": [
             {
               "type": "text",
-              "text": "混種貓 黑色 性別:母",
+              "text": "混種犬  白色 性別:母",
               "weight": "bold",
               "size": "xl"
             },
@@ -104,7 +104,7 @@
               "action": {
                 "type": "uri",
                 "label": "CALL",
-                "uri": " tel:02-89662158"
+                "uri": "https://line.me/"
               }
             },
             {
@@ -114,7 +114,7 @@
               "action": {
                 "type": "uri",
                 "label": "WEBSITE",
-                "uri": " https://www.google.com/maps/place/新北市板橋區公立動物之家"
+                "uri": "https://line.me/"
               }
             },
             {
@@ -131,7 +131,7 @@
         "type": "bubble",
         "hero": {
           "type": "image",
-          "url": "https://www.pet.gov.tw/upload/pic/1716887710484.png",
+          "url": "",
           "size": "full",
           "aspectRatio": "20:13",
           "aspectMode": "cover"
@@ -142,7 +142,7 @@
           "contents": [
             {
               "type": "text",
-              "text": "混種貓 虎斑色 性別:公",
+              "text": "混種犬  黑色 性別:母",
               "weight": "bold",
               "size": "xl"
             },
@@ -227,7 +227,7 @@
               "action": {
                 "type": "uri",
                 "label": "CALL",
-                "uri": " tel:02-87913254"
+                "uri": "https://line.me/"
               }
             },
             {
@@ -237,7 +237,7 @@
               "action": {
                 "type": "uri",
                 "label": "WEBSITE",
-                "uri": " https://www.google.com/maps/place/臺北市動物之家"
+                "uri": "https://line.me/"
               }
             },
             {
@@ -254,7 +254,7 @@
         "type": "bubble",
         "hero": {
           "type": "image",
-          "url": "https://www.pet.gov.tw/upload/pic/1716887283511.png",
+          "url": "https://www.pet.gov.tw/upload/pic/1717147152900.png",
           "size": "full",
           "aspectRatio": "20:13",
           "aspectMode": "cover"
@@ -265,7 +265,7 @@
           "contents": [
             {
               "type": "text",
-              "text": "混種貓 黃虎斑色 性別:母",
+              "text": "混種犬  黑黃色 性別:母",
               "weight": "bold",
               "size": "xl"
             },
@@ -350,7 +350,7 @@
               "action": {
                 "type": "uri",
                 "label": "CALL",
-                "uri": " tel:089-362011"
+                "uri": "https://line.me/"
               }
             },
             {
@@ -360,7 +360,7 @@
               "action": {
                 "type": "uri",
                 "label": "WEBSITE",
-                "uri": " https://www.google.com/maps/place/臺東縣動物收容中心"
+                "uri": "https://line.me/"
               }
             },
             {
@@ -377,7 +377,7 @@
         "type": "bubble",
         "hero": {
           "type": "image",
-          "url": "https://www.pet.gov.tw/upload/pic/1716821873546.png",
+          "url": "",
           "size": "full",
           "aspectRatio": "20:13",
           "aspectMode": "cover"
@@ -388,7 +388,7 @@
           "contents": [
             {
               "type": "text",
-              "text": "混種貓 三花色 性別:母",
+              "text": "混種犬  黑色 性別:母",
               "weight": "bold",
               "size": "xl"
             },
@@ -473,7 +473,7 @@
               "action": {
                 "type": "uri",
                 "label": "CALL",
-                "uri": " tel:03-5519548"
+                "uri": "https://line.me/"
               }
             },
             {
@@ -483,7 +483,7 @@
               "action": {
                 "type": "uri",
                 "label": "WEBSITE",
-                "uri": " https://www.google.com/maps/place/新竹縣動物保護教育園區"
+                "uri": "https://line.me/"
               }
             },
             {
@@ -500,7 +500,7 @@
         "type": "bubble",
         "hero": {
           "type": "image",
-          "url": "https://www.pet.gov.tw/upload/pic/1716884710677.png",
+          "url": "https://www.pet.gov.tw/upload/pic/1717146460026.png",
           "size": "full",
           "aspectRatio": "20:13",
           "aspectMode": "cover"
@@ -511,7 +511,7 @@
           "contents": [
             {
               "type": "text",
-              "text": "混種貓 黑白色 性別:不知道",
+              "text": "混種犬  黑色 性別:母",
               "weight": "bold",
               "size": "xl"
             },
@@ -596,7 +596,7 @@
               "action": {
                 "type": "uri",
                 "label": "CALL",
-                "uri": " tel:039602350分機620"
+                "uri": "https://line.me/"
               }
             },
             {
@@ -606,7 +606,7 @@
               "action": {
                 "type": "uri",
                 "label": "WEBSITE",
-                "uri": " https://www.google.com/maps/place/宜蘭縣流浪動物中途之家"
+                "uri": "https://line.me/"
               }
             },
             {

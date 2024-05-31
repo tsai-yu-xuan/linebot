@@ -45,10 +45,10 @@ export default {
             contents: [
               {
                 type: 'text',
-                text: 'Place',
+                text: '動物狀態',
                 color: '#aaaaaa',
                 size: 'sm',
-                flex: 1
+                flex: 3
               },
               {
                 type: 'text',
@@ -67,10 +67,10 @@ export default {
             contents: [
               {
                 type: 'text',
-                text: 'Time',
+                text: '所屬收容所名稱',
                 color: '#aaaaaa',
                 size: 'sm',
-                flex: 1
+                flex: 3
               },
               {
                 type: 'text',
@@ -93,21 +93,21 @@ export default {
     contents: [
       {
         type: 'button',
-        style: 'link',
+        style: 'secondary',
         height: 'sm',
         action: {
           type: 'uri',
-          label: 'CALL',
+          label: '來電詢問',
           uri: 'https://line.me/'
         }
       },
       {
         type: 'button',
-        style: 'link',
+        style: 'secondary',
         height: 'sm',
         action: {
           type: 'uri',
-          label: 'WEBSITE',
+          label: '地圖',
           uri: 'https://line.me/'
         }
       },

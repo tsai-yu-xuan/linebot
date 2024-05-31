@@ -11,7 +11,7 @@ export default async (event) => {
     // console.log(course)
 
     const animals = courses.slice(0, limit).map(animal => {
-      // console.log('animal', animal)
+      console.log('animal', animal)
       const replyAdopt = JSON.parse(JSON.stringify(adopt))
       console.log(replyAdopt)
       let a = ''
@@ -22,14 +22,47 @@ export default async (event) => {
       } else {
         a = '性別:不知道'
       }
-      replyAdopt.hero.url = animal.album_file
-      replyAdopt.body.contents[0].text = `${animal.animal_Variety.trim() + ' ' + animal.animal_colour + ' ' + a}`
-      replyAdopt.footer.contents[0].action.uri = ` tel:${animal.shelter_tel}`
-      replyAdopt.footer.contents[1].action.uri = ` https://www.google.com/maps/place/${animal.shelter_name}`
+      // 沒有無片時放固定照片
+      if (animal.album_file === '') {
+        replyAdopt.hero.url = 'https://img.freepik.com/free-vector/different-pets-concept_52683-37901.jpg'
+      } else { replyAdopt.hero.url = animal.album_file }
+      // 動物年齡
+      let age = ''
+      if (animal.animal_age === 'CHILD') {
+        age = '幼年'
+      } else if (animal.animal_age === 'ADULT') {
+        age = '成年'
+      } else {
+        age = '不知道'
+      }
+      // 動物狀態 開放認養?
+      let status = ''
+      if (animal.animal_status === 'OPEN') {
+        status = '開放認養'
+      } else if (animal.animal_status === 'ADOPTED') {
+        status = '已認養'
+      } else if (animal.animal_status === 'NONE') {
+        status = '未公告'
+      } else if (animal.animal_status === 'DEAD') {
+        status = '已死亡'
+      } else {
+        status = '其他'
+      }
 
+      replyAdopt.body.contents[0].text = `${animal.animal_Variety.trim()}　${animal.animal_colour}　${a}`
+      replyAdopt.body.contents[1].contents[0].text = age
+      replyAdopt.body.contents[2].contents[0].contents[1].text = status
+      replyAdopt.body.contents[2].contents[1].contents[1].text = animal.shelter_name ? animal.shelter_name : '無資料'
+      // 處理電話號碼中的分機部分
+      let shelterTel = animal.shelter_tel
+      if (shelterTel.includes('分機')) {
+        shelterTel = shelterTel.replace('分機', '#')
+      }
+      replyAdopt.footer.contents[0].action.uri = `tel:+886${shelterTel}`
+      replyAdopt.footer.contents[1].action.uri = `https://www.google.com.tw/maps/place/${encodeURIComponent(animal.shelter_address)}`
       return replyAdopt
     })
-    const reply = {
+    const animalsReply = {
       type: 'flex',
       altText: '寵物認養查詢結果',
       contents: {
@@ -38,16 +71,11 @@ export default async (event) => {
         contents: animals
       }
     }
-    event.reply(reply)
-    const exists = fs.existsSync('./dump')
-    if (!exists) {
-      fs.mkdirSync('./dump')
-    }
-    fs.writeFileSync('./dump/animals.json', JSON.stringify(reply, null, 2))
-    console.log(JSON.stringify(reply, null, 2))
-    // animals()
+    const result = await event.reply(animalsReply)
 
-    // event.reply([data.album_file, data.animal_Variety])
+    if (process.env.DEBUG === 'true') {
+      if (result.message) { fs.writeFileSync('./dump/animals.json', JSON.stringify(animals, null, 2)) }
+    }
   } catch (error) {
     console.log(error)
     event.reply('發生錯誤，請稍後在試')
