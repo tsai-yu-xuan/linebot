@@ -7,8 +7,8 @@ export default async (event) => {
     const { data } = await axios.get('https://data.moa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&IsTransData=1')
     const courses = data.filter(courses => courses.animal_kind === event.message.text)
 
-    const limit = 5
-    // console.log(course)
+    const limit = 10
+    // console.log(courses)
 
     const animals = courses.slice(0, limit).map(animal => {
       console.log('animal', animal)
@@ -24,7 +24,7 @@ export default async (event) => {
       }
       // 沒有無片時放固定照片
       if (animal.album_file === '') {
-        replyAdopt.hero.url = 'https://img.freepik.com/free-vector/different-pets-concept_52683-37901.jpg'
+        replyAdopt.hero.url = 'https://github.com/tsai-yu-xuan/linebot-04/blob/main/images/no.jpg?raw=true'
       } else { replyAdopt.hero.url = animal.album_file }
       // 動物年齡
       let age = ''
@@ -49,8 +49,8 @@ export default async (event) => {
         status = '其他'
       }
 
-      replyAdopt.body.contents[0].text = `${animal.animal_Variety.trim()}　${animal.animal_colour}　${a}`
-      replyAdopt.body.contents[1].contents[0].text = age
+      replyAdopt.body.contents[0].text = `${animal.animal_Variety.trim()} ${animal.animal_colour}`
+      replyAdopt.body.contents[1].contents[0].text = `${age.trim()}  ${a}`
       replyAdopt.body.contents[2].contents[0].contents[1].text = status
       replyAdopt.body.contents[2].contents[1].contents[1].text = animal.shelter_name ? animal.shelter_name : '無資料'
       // 處理電話號碼中的分機部分
@@ -58,6 +58,9 @@ export default async (event) => {
       if (shelterTel.includes('分機')) {
         shelterTel = shelterTel.replace('分機', '#')
       }
+      // 將電話號碼中的所有特殊字符進行URL編碼處理
+      shelterTel = encodeURIComponent(shelterTel)
+
       replyAdopt.footer.contents[0].action.uri = `tel:+886${shelterTel}`
       replyAdopt.footer.contents[1].action.uri = `https://www.google.com.tw/maps/place/${encodeURIComponent(animal.shelter_address)}`
       return replyAdopt

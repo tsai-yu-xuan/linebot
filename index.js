@@ -18,22 +18,12 @@ bot.on('message', async (event) => {
   if (event.message.text === '狗' || event.message.text === '貓') {
     // fe()
     fe(event)
+  } else {
+    event.reply('請輸入 " 貓 " 或 " 狗 " (一個字就好)')
   }
-  // if (process.env.DEBUG === 'true') {
-  //   console.log(event)
-  // }
-  // 抓定位
-  // if (event.message.type === 'location') {
-  //   adopt()
-  // }
 })
 // linebot 偵測指定 port 的指定路徑請求
 bot.listen('/', process.env.PORT || 3000, () => {
   console.log('機器人啟動')
 })
 // process.env.PORT 因為之後會推雲端 所以要設
-
-// 放動物 貓或狗
-// 公或母
-// 地址區分
-// 年齡區分

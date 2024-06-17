@@ -4,7 +4,7 @@ export default {
     type: 'image',
     url: 'https://developers-resource.landpress.line.me/fx/img/01_1_cafe.png',
     size: 'full',
-    aspectRatio: '20:13',
+    aspectRatio: '21:20',
     aspectMode: 'cover'
   },
   body: {
