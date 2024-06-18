@@ -15,8 +15,8 @@ const bot = linebot({
 
 // 當我的bot收到訊息時，
 bot.on('message', async (event) => {
-  if (event.message.text === '狗' || event.message.text === '貓') {
-    // fe()
+  if (event.message.text === '狗' || event.message.text === '貓' || event.message.text === '我要領養貓貓' || event.message.text === '我要領養狗狗') {
+    console.log('Calling fe function for 狗 or 貓') // 调试信息
     fe(event)
   } else {
     event.reply('請輸入 " 貓 " 或 " 狗 " (一個字就好)')

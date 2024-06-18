@@ -4,11 +4,18 @@ import fs from 'node:fs'
 
 export default async (event) => {
   try {
+    // 讓我要領養貓貓、我要領養狗狗都改成"貓"或"狗"
+    let messageText = event.message.text.trim()
+    if (messageText === '我要領養貓貓') {
+      messageText = '貓'
+    } else if (messageText === '我要領養狗狗') {
+      messageText = '狗'
+    }
+
     const { data } = await axios.get('https://data.moa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&IsTransData=1')
-    const courses = data.filter(courses => courses.animal_kind === event.message.text)
+    const courses = data.filter(courses => courses.animal_kind === messageText)
 
     const limit = 10
-    // console.log(courses)
 
     const animals = courses.slice(0, limit).map(animal => {
       console.log('animal', animal)
